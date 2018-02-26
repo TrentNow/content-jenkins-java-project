@@ -2,25 +2,30 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class RectangleTest {
-  Rectangle myRectangle = new Rectangle(5,6);
+  Rectangle rectangle = new Rectangle(3,4);
 
   @Test
   public void testGetArea() {
-    assertEquals(myRectangle.getArea(), 30);
-  }
+  
+     assertEquals(rectangle.getArea(), 12);
+}
 
   @Test
   public void testGetPerimeter() {
-    assertEquals(myRectangle.getPerimeter(), 22);
-  }
 
-  @Test
-  public void testLength() {
-    assertEquals(myRectangle.length, 5);
-  }
-
-  @Test
-  public void testWidth() {
-    assertEquals(myRectangle.width, 6);
-  }
+     assertEquals(rectangle.getPerimeter(), 14);
 }
+
+  @Test
+  public void testGetArea() {
+
+     assertEquals(rectangle.getLength(), 5);
+}
+
+  @Test
+  public void testGetArea() {
+
+     assertEquals(rectangle.getWidth(), 4);
+}
+}
+

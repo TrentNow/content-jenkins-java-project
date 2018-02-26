@@ -8,6 +8,12 @@ environment {
 }
 
 stages {
+  stage('Unit Testing') {
+    steps {
+      sh 'ant -f test.xml -v'
+      junit 'reports/result.xml'
+}
+}
   stage('Build') {
     steps {
       sh 'ant -f build.xml -v'
@@ -16,12 +22,7 @@ stages {
 post {
   always {
      archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
-}
-}
-}
-  stage('deploy') {
-    steps {
-       sh 'rectangle_${MAJOR_VERSION}.${BUILD_NUMER}.jar 4 5'
+
 }
 }
 }
