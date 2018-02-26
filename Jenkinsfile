@@ -18,7 +18,7 @@ post {
 }
   stage('deploy') {
     steps {
-      java -jar dist/Rectangle.jar 6 10
+      java -jar dist/rectangle_1.8.jar 6 10
 }
 }
 }
