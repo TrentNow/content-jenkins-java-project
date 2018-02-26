@@ -3,6 +3,10 @@ pipeline {
     label 'Centos'
 }
 
+environment {
+   MAJOR_VERSION = 1
+}
+
 stages {
   stage('Build') {
     steps {
