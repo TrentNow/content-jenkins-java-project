@@ -2,7 +2,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class RectangleTest {
-  Rectangle rectangle = new Rectangle(3,4);
+  Rectangle rectangle = new Rectangle(3, 4);
 
   @Test
   public void testGetArea() {
@@ -17,15 +17,15 @@ public class RectangleTest {
 }
 
   @Test
-  public void testGetArea() {
+  public void testGetLength() {
 
-     assertEquals(rectangle.getLength(), 5);
+     assertEquals(rectangle.length, 3);
 }
 
   @Test
-  public void testGetArea() {
+  public void testGetWidth() {
 
-     assertEquals(rectangle.getWidth(), 4);
+     assertEquals(rectangle.width, 4);
 }
 }
 
