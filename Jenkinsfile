@@ -17,14 +17,13 @@ stages {
   stage('Build') {
     steps {
       sh 'ant -f build.xml -v'
+      }
+    }
+  stage('Deploy') {
+    steps {
+      cp 'dist/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar /var/www/html/rectangles'
+   }
+}
       
-}
-post {
-  always {
-     archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
-
-}
-}
-}
 }
 }
