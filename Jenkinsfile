@@ -24,6 +24,10 @@ stages {
       sh "cp dist/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar /var/www/html/rectangles"
    }
 }
-      
+}
+  post {
+    always {
+      archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
+}
 }
 }
