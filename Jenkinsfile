@@ -21,7 +21,7 @@ stages {
     }
   stage('Deploy') {
     steps {
-      sh "cp dist/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar /var/www/html/rectangles"
+      sh "cp dist/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar /var/www/html/rectangles/all/"
    }
 }
 }
