@@ -45,5 +45,14 @@ stages {
       sh "java -jar rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar 12 4"
 }
       }
+   stage('Running on Docker Container') {
+   agent {
+     docker 'openjdk:8u151-jre-stretch'
+}
+     steps {
+       sh "wget http://ec2-52-0-6-126.compute-1.amazonaws.com/rectangles/all/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar"
+       sh "java -jar rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar"
+}
+}
 }
 }
