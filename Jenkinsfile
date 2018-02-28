@@ -7,6 +7,9 @@ environment {
 
 stages {
   stage('Unit Testing') {
+    agent {
+    label 'Centos'
+}
     steps {
       sh 'ant -f test.xml -v'
       junit 'reports/result.xml'
@@ -26,6 +29,9 @@ stages {
       }
     }
   stage('Deploy') {
+    agent {
+      label 'Centos'
+   }
     steps {
       sh "cp dist/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar /var/www/html/rectangles/all/"
    }
