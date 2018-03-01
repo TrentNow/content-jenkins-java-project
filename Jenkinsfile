@@ -33,8 +33,8 @@ stages {
       label 'Centos'
    }
     steps {
-      sh "mkdir -p /var/www/html/rectangles/all/${env.BRANCH_NAME}/"
-      sh "cp dist/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar /var/www/html/rectangles/all/${env.BRANCH_NAME}/"
+      sh "mkdir -p /var/www/html/rectangles/all/${env.BRANCH_NAME}"
+      sh "cp dist/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar /var/www/html/rectangles/all/${env.BRANCH_NAME}"
    }
 }
   stage('Running on Centos') {
