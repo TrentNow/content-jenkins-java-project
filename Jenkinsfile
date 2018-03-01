@@ -33,7 +33,8 @@ stages {
       label 'Centos'
    }
     steps {
-      sh "cp dist/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar /var/www/html/rectangles/all/"
+      sh "mkdir -p /var/www/html/rectangles/all/${env.BRANCH_NAME}/
+      sh "cp dist/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar /var/www/html/rectangles/all/${env.BRANCH_NAME}/"
    }
 }
   stage('Running on Centos') {
@@ -41,7 +42,7 @@ stages {
     label 'Centos'
 }
     steps {
-      sh "wget http://ec2-52-0-6-126.compute-1.amazonaws.com/rectangles/all/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar"
+      sh "wget http://ec2-52-0-6-126.compute-1.amazonaws.com/rectangles/all/${env.BRANCH_NAME}/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar"
       sh "java -jar rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar 12 4"
 }
       }
@@ -50,7 +51,7 @@ stages {
      docker 'openjdk:8u151-jre-stretch'
 }
      steps {
-       sh "wget http://ec2-52-0-6-126.compute-1.amazonaws.com/rectangles/all/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar"
+       sh "wget http://ec2-52-0-6-126.compute-1.amazonaws.com/rectangles/all/${env.BRANCH_NAME}/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar"
        sh "java -jar rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar 20 10"
 }
 }
@@ -58,8 +59,31 @@ stages {
    agent {
      label 'Centos'
 }
+   when {
+     branch 'master'
+}
      steps {
        sh "cp /var/www/html/rectangles/all/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar /var/www/html/rectangles/green/rectangle_${MAJOR_VERSION}.${BUILD_NUMBER}.jar"
+}
+}
+   stage('Promote Development Branch to Master') {
+   agent {
+     label 'Centos'
+}
+   when {
+   branch 'development'
+}
+   steps {
+     echo "Stashing Any local Changes"
+     sh "git stash"
+     echo "Checking out development branch"
+     sh "git checkout development"
+     echo "Checking Master branch"
+     sh "git checkout master"
+     echo "Merging development branch"
+     sh "git merge development"
+     echo "Push to origin master"
+     sh "git push origin master"
 }
 }
 }
