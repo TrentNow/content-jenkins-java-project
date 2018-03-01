@@ -81,6 +81,8 @@ stages {
      echo "fecthing repo"
      sh "git fetch"
      echo "Checking Master branch"
+     sh "git config --add remote.origin.fetch 
+     sh "git fetch --no-tags"
      sh "git pull origin"
      sh "git checkout master"
      echo "Merging development branch"
