@@ -80,8 +80,6 @@ stages {
      sh "git checkout development"
      echo "Checking Master branch"
      sh "git checkout master"
-     echo "Checking Master branch"
-     sh "git checkout master"
      echo "Merging development branch"
      sh "git merge development"
      echo "Push to origin master"
