@@ -78,6 +78,8 @@ stages {
      sh "git stash"
      echo "Checking out development branch"
      sh "git checkout development"
+     echo "fecthing repo"
+     sh "git fetch"
      echo "Checking Master branch"
      sh "git checkout master"
      echo "Merging development branch"
