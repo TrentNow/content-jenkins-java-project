@@ -81,6 +81,7 @@ stages {
      echo "fecthing repo"
      sh "git fetch"
      echo "Checking Master branch"
+     sh "git pull origin"
      sh "git checkout master"
      echo "Merging development branch"
      sh "git merge development"
