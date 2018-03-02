@@ -102,6 +102,8 @@ stages {
       )
     }
 }
+}
+}
    post {
     failure {
       emailext(
@@ -111,6 +113,5 @@ stages {
         to: "trentonlcain@gmail.com"
       )
     }
-}
 }
 }
