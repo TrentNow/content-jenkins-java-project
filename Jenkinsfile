@@ -83,6 +83,9 @@ stages {
      echo "Checking Master branch"
      sh "git fetch --no-tags"
      sh "git pull origin"
+     sh "git add -A"
+     sh "git commit -m "${env.JOB_NAME}"
+     sh " git push origin development
      sh "git checkout master"
      echo "Merging development branch"
      sh "git merge development"
