@@ -92,7 +92,7 @@ stages {
    
 }
 }
-
+}
   post {
    success {
      emailext(
@@ -102,6 +102,7 @@ stages {
         to: "trentonlcain@gmail.com"
       )
     }
+}
    post {
     failure {
       emailext(
