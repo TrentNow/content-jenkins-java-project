@@ -92,7 +92,7 @@ stages {
    
 }
 }
-}
+
   post {
    success {
      emailext(
