@@ -6,6 +6,12 @@ environment {
 }
 
 stages {
+  stage('Say Hello') {
+  agent any
+    steps {
+      sayHello 'Awesomesauce'
+}
+}
   stage('Unit Testing') {
     agent {
     label 'Centos'
